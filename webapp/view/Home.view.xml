@@ -1,7 +1,26 @@
-<mvc:View controllerName="todolist.controller.Home"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
-    </Page>
+<mvc:View
+	controllerName="todolist.controller.Home"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m"
+>
+	<Page
+		id="page"
+		title="{i18n>title}"
+	>
+		<Text
+			id="_IDGenText1"
+			text="home"
+			textAlign="Begin"
+			textDirection="Inherit"
+			width=""
+			wrapping="true"
+			wrappingType="Normal"
+		/>
+		<Button
+			id="_IDGenButton1"
+			text="Go to target view"
+			press=".onDisplayNotFound"
+		/>
+	</Page>
 </mvc:View>

@@ -1,0 +1,46 @@
+<mvc:View
+	controllerName="todolist.controller.Vista"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+	<App id="vista">
+		
+		<Panel
+			accessibleRole="Form"
+			backgroundDesign="Translucent"
+			expandAnimation="true"
+			expandable="false"
+			expanded="false"
+			headerText="empty string"
+			height="auto"
+			width="100%"
+		>
+			<content>
+				<Text
+					renderWhitespace="false"
+					text="Ahora soy el encabezado de texto"
+					textAlign="Begin"
+					textDirection="Inherit"
+					width=""
+					wrapping="true"
+					wrappingType="Normal"
+				/>
+			</content>
+			<headerToolbar>
+			</headerToolbar>
+			<content>
+				<Carousel class="sapUiContentPadding"  loop="true">
+					
+					<Image src="{img>/message}" alt="Example picture of USB flash drive" />
+					
+					</Text>
+				</Carousel>
+			</content>
+			<infoToolbar>
+			</infoToolbar>
+		</Panel>
+	</App>
+</mvc:View>
