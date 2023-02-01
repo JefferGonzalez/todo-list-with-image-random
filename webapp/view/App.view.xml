@@ -1,7 +1,41 @@
-<mvc:View controllerName="todolist.controller.App"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <App id="app">
-    </App>
+<mvc:View
+	controllerName="todolist.controller.App"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:tnt="sap.tnt"
+>
+	<tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Button
+					id="btn-hamburger"
+					icon="sap-icon://menu2"
+					press=".onHamburgerPress"
+					tooltip="{i18n>btnHamburgerCollapse}"
+				/>
+				<ToolbarSpacer/>
+				<Title
+					text="{i18n>appTitle}"
+					level="H2"
+				/>
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation>
+				<tnt:NavigationList>
+					<tnt:items>
+						<tnt:NavigationListItem
+							key="home"
+							text="Home"
+							icon="sap-icon://home"
+						/>
+					</tnt:items>
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<App id="app"/>
+		</tnt:mainContents>
+	</tnt:ToolPage>
 </mvc:View>
