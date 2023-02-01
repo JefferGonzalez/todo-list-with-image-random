@@ -15,8 +15,6 @@ sap.ui.define(
       },
       onDisplayNotFound: function () {
         // eslint-disable-next-line no-undef
-        alert('Not found')
-        // eslint-disable-next-line no-undef
         this.getRouter().getTargets().display('vista', {
           fromTarget: 'vista'
         })

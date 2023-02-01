@@ -1,24 +1,32 @@
 // eslint-disable-next-line no-undef
 sap.ui.define([
-  'sap/ui/core/mvc/Controller'
+  'sap/ui/core/mvc/Controller',
+  'sap/ui/model/json/JSONModel'
 ],
-/**
-       * @param {typeof sap.ui.core.mvc.Controller} Controller
-       */
-function (Controller) {
+
+function (Controller, JSONModel) {
   'use strict'
 
   return Controller.extend('todolist.controller.Vista', {
     onInit: function () {
+      const oImgModel = new JSONModel()
+      fetch('https://dog.ceo/api/breeds/image/random')
+        .then(response => response.json())
+        // eslint-disable-next-line no-undef
+        .then(data => {
+          oImgModel.setData(data)
+        })
+        .then(console.log(oImgModel))
+        // eslint-disable-next-line no-undef
 
+      this.getView().setModel(oImgModel, 'img')
     },
-    handleButtonPress: function () {
+    onLandClick: function () {
       // eslint-disable-next-line no-undef
-      alert('jjj')
-      // eslint-disable-next-line no-undef
-      const router = sap.ui.core.UIComponent.getRouterFor(this)
-      router.navTo('home')
+      this.getRouter().getTargets().display('vista', {
+        fromTarget: 'vista'
+      })
     }
-
   })
-})
+}
+)
