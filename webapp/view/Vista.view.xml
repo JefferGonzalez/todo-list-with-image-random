@@ -1,19 +1,12 @@
 <mvc:View
 	controllerName="todolist.controller.Vista"
+	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true"
-	height="100%"
 	busyIndicatorDelay="0"
-	xmlns="sap.m"
 >
-	<Panel
-		width="50%"
-		class="centerImage sapUiResponsivePadding--header"
-	>
-		<Bar
-			design="Auto"
-			titleAlignment="Center"
-		>
+	<Panel class="centerImage sapUiResponsivePadding--header" height="100%">
+		<Bar titleAlignment="Center">
 			<contentMiddle>
 				<Title
 					level="Auto"
@@ -48,7 +41,7 @@
 			/>
 		</content>
 		<content>
-			<OverflowToolbar class=" centerFooter ">
+			<OverflowToolbar class="centerFooter border-none">
 				<content>
 					<Button
 						icon="sap-icon://heart"

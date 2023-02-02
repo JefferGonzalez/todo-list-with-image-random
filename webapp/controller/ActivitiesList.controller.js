@@ -4,9 +4,10 @@ sap.ui.define(
     'sap/ui/core/mvc/Controller',
     'sap/ui/model/json/JSONModel',
     'sap/ui/model/Filter',
-    'sap/ui/model/FilterOperator'
+    'sap/ui/model/FilterOperator',
+    'sap/ui/model/Sorter'
   ],
-  function (Controller, JSONModel, Filter, FilterOperator) {
+  function (Controller, JSONModel, Filter, FilterOperator, Sorter) {
     'use strict'
 
     return Controller.extend('todolist.controller.ActivitiesList', {
@@ -17,14 +18,13 @@ sap.ui.define(
           .then(({ results }) => oModel.setData(results))
 
         this.getView().setModel(oModel, 'characters')
+        this._bDescendingSort = false
+        this._oList = this.byId('activitiesList')
+        this._oTable = this.byId('activitiesTable')
       },
       onChangeDisplayMode: function (oEvent) {
-        const oList = this.byId('activitiesList')
-        const oTable = this.byId('activitiesTable')
-        const oPanel = this.byId('activitiesPanel')
-        oList.setVisible(!oList.getVisible())
-        oTable.setVisible(!oTable.getVisible())
-        oPanel.setExpanded(false)
+        this._oList.setVisible(!this._oList.getVisible())
+        this._oTable.setVisible(!this._oTable.getVisible())
       },
       onFilter: function (oEvent) {
         const aFilter = []
@@ -32,13 +32,21 @@ sap.ui.define(
         if (sQuery) {
           aFilter.push(new Filter('name', FilterOperator.Contains, sQuery))
         }
-        const oList = this.byId('activitiesList')
-        const oTable = this.byId('activitiesTable')
-        if (oList.getVisible()) {
-          oList.getBinding('items').filter(aFilter)
-        } else if (oTable.getVisible()) {
-          oTable.getBinding('items').filter(aFilter)
-        }
+        const oBinding = this._oList.getVisible()
+          ? this._oList.getBinding('items')
+          : this._oTable.getBinding('items')
+
+        oBinding.filter(aFilter)
+      },
+
+      onSort: function (oEvent) {
+        this._bDescendingSort = !this._bDescendingSort
+        const oBinding = this._oList.getVisible()
+          ? this._oList.getBinding('items')
+          : this._oTable.getBinding('items')
+
+        const oSorter = new Sorter('name', this._bDescendingSort)
+        oBinding.sort(oSorter)
       }
     })
   }

@@ -5,7 +5,10 @@
 	xmlns="sap.m"
 	xmlns:tnt="sap.tnt"
 >
-	<tnt:ToolPage id="toolPage">
+	<tnt:ToolPage
+		id="toolPage"
+		sideExpanded="false"
+	>
 		<tnt:header>
 			<tnt:ToolHeader id="slideBarHeader">
 				<Button

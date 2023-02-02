@@ -93,7 +93,7 @@
           "viewId": "Home",
           "viewName": "Home"
         },
-        "vista" : {
+        "vista": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
