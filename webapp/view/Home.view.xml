@@ -2,33 +2,23 @@
 	controllerName="todolist.controller.Home"
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true"
-	xmlns="sap.m"
+	xmlns="sap.f"
 >
-	<Page
-		id="page"
-		title="{i18n>appTitle}"
+	<FlexibleColumnLayout
+		backgroundDesign="Solid"
+		layout="TwoColumnsBeginExpanded"
 	>
-		<Text
-			id="_IDGenText1"
-			text="home"
-			textAlign="Begin"
-			textDirection="Inherit"
-			width=""
-			wrapping="true"
-			wrappingType="Normal"
-		/>
-		<Button
-			id="_IDGenButton1"
-			text="Go to target view"
-			press=".onDisplayNotFound"
-		/>
-		<mvc:XMLView
-			id="activitiesView"
-			viewName="todolist.view.ActivitiesList"
-		/>
-		<content>
-			<mvc:XMLView viewName="todolist.view.Vista"/>
-			<mvc:XMLView viewName="todolist.view.Vista"/>
-		</content>
-	</Page>
+		<beginColumnPages>
+			<mvc:XMLView
+				id="activityDetails"
+				viewName="todolist.view.Vista"
+			/>
+		</beginColumnPages>
+		<midColumnPages>
+			<mvc:XMLView
+				id="activitiesView"
+				viewName="todolist.view.ActivitiesList"
+			/>
+		</midColumnPages>
+	</FlexibleColumnLayout>
 </mvc:View>

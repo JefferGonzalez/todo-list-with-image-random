@@ -14,5 +14,11 @@
 			width="50%"
 			search=".onFilter"
 		/>
+		<Button
+			icon="sap-icon://sort"
+			tooltip="{i18n>sorter}"
+			type="Transparent"
+			press=".onSort"
+		/>
 	</Toolbar>
 </core:FragmentDefinition>
