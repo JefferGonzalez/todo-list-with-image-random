@@ -6,8 +6,26 @@
 >
 	<Page
 		id="page"
-		title="{i18n>title}"
+		title="{i18n>appTitle}"
 	>
+		<Text
+			id="_IDGenText1"
+			text="home"
+			textAlign="Begin"
+			textDirection="Inherit"
+			width=""
+			wrapping="true"
+			wrappingType="Normal"
+		/>
+		<Button
+			id="_IDGenButton1"
+			text="Go to target view"
+			press=".onDisplayNotFound"
+		/>
+		<mvc:XMLView
+			id="activitiesView"
+			viewName="todolist.view.ActivitiesList"
+		/>
 		<content>
 			<mvc:XMLView viewName="todolist.view.Vista"/>
 			<mvc:XMLView viewName="todolist.view.Vista"/>
