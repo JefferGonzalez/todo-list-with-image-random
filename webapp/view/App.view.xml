@@ -7,25 +7,27 @@
 >
 	<tnt:ToolPage id="toolPage">
 		<tnt:header>
-			<tnt:ToolHeader>
+			<tnt:ToolHeader id="slideBarHeader">
 				<Button
-					id="btn-hamburger"
+					id="btnHamburger"
 					icon="sap-icon://menu2"
 					press=".onHamburgerPress"
 					tooltip="{i18n>btnHamburgerCollapse}"
 				/>
-				<ToolbarSpacer/>
+				<ToolbarSpacer id="headerSpacer"/>
 				<Title
+					id="headerTitle"
 					text="{i18n>appTitle}"
 					level="H2"
 				/>
 			</tnt:ToolHeader>
 		</tnt:header>
 		<tnt:sideContent>
-			<tnt:SideNavigation>
-				<tnt:NavigationList>
+			<tnt:SideNavigation id="slideBar">
+				<tnt:NavigationList id="slideBarList">
 					<tnt:items>
 						<tnt:NavigationListItem
+							id="slideBarListItemHome"
 							key="home"
 							text="Home"
 							icon="sap-icon://home"

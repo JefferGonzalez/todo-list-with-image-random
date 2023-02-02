@@ -6,7 +6,7 @@
 >
 	<Page
 		id="page"
-		title="{i18n>title}"
+		title="{i18n>appTitle}"
 	>
 		<Text
 			id="_IDGenText1"
@@ -21,6 +21,10 @@
 			id="_IDGenButton1"
 			text="Go to target view"
 			press=".onDisplayNotFound"
+		/>
+		<mvc:XMLView
+			id="activitiesView"
+			viewName="todolist.view.ActivitiesList"
 		/>
 	</Page>
 </mvc:View>

@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+	<Toolbar id="activitiesToolbar">
+		<Title
+			id="activitiesTitle"
+			text="{i18n>activitiesTitle}"
+		/>
+		<ToolbarSpacer id="activitiesToolbarSpacer"/>
+		<SearchField
+			id="activitiesSearchField"
+			placeholder="{i18n>searchField}"
+			width="50%"
+			search=".onFilter"
+		/>
+	</Toolbar>
+</core:FragmentDefinition>

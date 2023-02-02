@@ -36,7 +36,6 @@
 					
 					<Image src="{img>/message}" alt="Example picture of USB flash drive" />
 					
-					</Text>
 				</Carousel>
 			</content>
 			<infoToolbar>
