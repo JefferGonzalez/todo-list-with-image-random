@@ -8,19 +8,9 @@
 		id="page"
 		title="{i18n>title}"
 	>
-		<Text
-			id="_IDGenText1"
-			text="home"
-			textAlign="Begin"
-			textDirection="Inherit"
-			width=""
-			wrapping="true"
-			wrappingType="Normal"
-		/>
-		<Button
-			id="_IDGenButton1"
-			text="Go to target view"
-			press=".onDisplayNotFound"
-		/>
+		<content>
+			<mvc:XMLView viewName="todolist.view.Vista"/>
+			<mvc:XMLView viewName="todolist.view.Vista"/>
+		</content>
 	</Page>
 </mvc:View>
