@@ -20,6 +20,16 @@ function (Controller, JSONModel) {
         // eslint-disable-next-line no-undef
 
       this.getView().setModel(oImgModel, 'img')
+      /* fetch('https://api.thecatapi.com/v1/images/search?limit=10')
+        .then(response => response.json())
+        // eslint-disable-next-line no-undef
+        .then(data => {
+          oImgModel.setData(data)
+        })
+        .then(console.log(oImgModel))
+        // eslint-disable-next-line no-undef
+
+      this.getView().setModel(oImgModel, 'img') */
     },
     onLandClick: function () {
       // eslint-disable-next-line no-undef

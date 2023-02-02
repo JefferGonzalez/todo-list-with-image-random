@@ -1,1 +1,17 @@
-/* Enter your custom styles here */
+.centerImage {
+   margin: auto;
+   display: block;
+   width: 30%;
+   height: 200px;
+}
+.centerFooter {
+    
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+/* .textCenter {
+    text-align: center;
+    margin: auto;
+    display: block;
+} */

@@ -26,5 +26,9 @@
 			id="activitiesView"
 			viewName="todolist.view.ActivitiesList"
 		/>
+		<content>
+			<mvc:XMLView viewName="todolist.view.Vista"/>
+			<mvc:XMLView viewName="todolist.view.Vista"/>
+		</content>
 	</Page>
 </mvc:View>

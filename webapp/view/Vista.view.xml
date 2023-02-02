@@ -1,45 +1,67 @@
 <mvc:View
 	controllerName="todolist.controller.Vista"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m"
 	displayBlock="true"
 	height="100%"
 	busyIndicatorDelay="0"
+	xmlns="sap.m"
 >
-	<App id="vista">
-		
-		<Panel
-			accessibleRole="Form"
-			backgroundDesign="Translucent"
-			expandAnimation="true"
-			expandable="false"
-			expanded="false"
-			headerText="empty string"
-			height="auto"
-			width="100%"
+	<Panel
+		width="50%"
+		class="centerImage sapUiResponsivePadding--header"
+	>
+		<Bar
+			design="Auto"
+			titleAlignment="Center"
 		>
-			<content>
-				<Text
-					renderWhitespace="false"
-					text="Ahora soy el encabezado de texto"
-					textAlign="Begin"
-					textDirection="Inherit"
+			<contentMiddle>
+				<Title
+					level="Auto"
+					text="Detalle"
+					textAlign="Initial"
+					titleStyle="Auto"
 					width=""
-					wrapping="true"
+					wrapping="false"
 					wrappingType="Normal"
 				/>
-			</content>
-			<headerToolbar>
-			</headerToolbar>
-			<content>
-				<Carousel class="sapUiContentPadding"  loop="true">
-					
-					<Image src="{img>/message}" alt="Example picture of USB flash drive" />
-					
-				</Carousel>
-			</content>
-			<infoToolbar>
-			</infoToolbar>
-		</Panel>
-	</App>
+			</contentMiddle>
+			<contentRight>
+			</contentRight>
+		</Bar>
+		<content class="sapUiNoContentPadding">
+			<Image
+				width="200px"
+				class="centerImage sapUiSmallMarginBottom  sapUiSmallMarginTop"
+				src="{img>/message}"
+			/>
+		</content>
+		<content>
+			<Text
+				class="textCenter "
+				renderWhitespace="false"
+				text="{img>/message}"
+				textAlign="Center"
+				textDirection="Inherit"
+				width="100%"
+				wrapping="true"
+				wrappingType="Normal"
+			/>
+		</content>
+		<content>
+			<OverflowToolbar class=" centerFooter ">
+				<content>
+					<Button
+						icon="sap-icon://heart"
+						text="Add"
+						type="Accept"
+					/>
+					<Button
+						text="Retry"
+						icon="sap-icon://reset"
+						type="Reject"
+					/>
+				</content>
+			</OverflowToolbar>
+		</content>
+	</Panel>
 </mvc:View>
