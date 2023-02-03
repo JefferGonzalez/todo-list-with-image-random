@@ -20,31 +20,28 @@
 					wrapping="false"
 					wrappingType="Normal"
 				/>
-				<Text
-					renderWhitespace="false"
-					text="-  Actividad:{nImg>/}"
-					
-				/>
 			</contentMiddle>
 			<contentRight>
 			</contentRight>
 		</Bar>
 		<content class="sapUiNoContentPadding">
-			
-			<List items="{nImg>/}">
+			<!-- <List items="{nImg>/}">
 				<items>
-					<ObjectListItem
-				id="activitiesListItem"
-				title="{nImg>url}: {nImg>url}"
-			/>
+					<StandardListItem  icon="{nImg>url}"/>
 				</items>
+				
+			</List> -->
+			<Carousel
+			width="50%"
+			height="50%"
+				class="centerImage"
+				loop="true"
+			>
 				<Image
-					width="200px"
-					class="centerImage sapUiSmallMarginBottom  sapUiSmallMarginTop"
-					src="{nImg>data}"
+					src="{nImg>/0/url}"
+					alt="Example picture of USB flash drive"
 				/>
-			</List>
-			
+			</Carousel>
 		</content>
 		<content>
 			<Text

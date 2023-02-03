@@ -30,7 +30,7 @@ function (Controller, JSONModel) {
         size: '256x256'
       }
 
-      const apiKey = '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'
+      const apiKey = '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'
 
       fetch(apiUrl, {
         method: 'POST',
@@ -41,9 +41,7 @@ function (Controller, JSONModel) {
         body: JSON.stringify(data)
       })
         .then((response) => response.json())
-        .then(dato => {
-          oNewImagen.setData(dato.data)
-        })
+        .then(({ data }) => oNewImagen.setData(data))
         .then(console.log(oNewImagen))
         .catch((error) => console.error(error))
       this.getView().setModel(oNewImagen, 'nImg')
