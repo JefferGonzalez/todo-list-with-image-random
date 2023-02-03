@@ -57,6 +57,13 @@
         "settings": {
           "bundleName": "todolist.i18n.i18n"
         }
+      },
+      "env": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "env.json",
+        "settings": {
+          "defaultBindingMode": "OneWay"
+        }
       }
     },
     "resources": {
@@ -64,7 +71,10 @@
         {
           "uri": "css/style.css"
         }
-      ]
+      ],
+      "config.json": {
+        "uri": "env.json"
+      }
     },
     "routing": {
       "config": {
