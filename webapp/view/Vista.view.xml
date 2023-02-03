@@ -5,7 +5,10 @@
 	displayBlock="true"
 	busyIndicatorDelay="0"
 >
-	<Panel class="centerImage sapUiResponsivePadding--header" height="100%">
+	<Panel
+		class="centerImage sapUiResponsivePadding--header"
+		height="100%"
+	>
 		<Bar titleAlignment="Center">
 			<contentMiddle>
 				<Title
@@ -22,17 +25,29 @@
 			</contentRight>
 		</Bar>
 		<content class="sapUiNoContentPadding">
-			<Image
-				width="200px"
-				class="centerImage sapUiSmallMarginBottom  sapUiSmallMarginTop"
-				src="{img>/message}"
-			/>
+			<!-- <List items="{nImg>/}">
+				<items>
+					<StandardListItem  icon="{nImg>url}"/>
+				</items>
+				
+			</List> -->
+			<Carousel
+			width="50%"
+			height="50%"
+				class="centerImage"
+				loop="true"
+			>
+				<Image
+					src="{nImg>/0/url}"
+					alt="Example picture of USB flash drive"
+				/>
+			</Carousel>
 		</content>
 		<content>
 			<Text
 				class="textCenter "
 				renderWhitespace="false"
-				text="{img>/message}"
+				text="{img>/activity}"
 				textAlign="Center"
 				textDirection="Inherit"
 				width="100%"
