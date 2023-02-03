@@ -38,8 +38,8 @@
 				loop="true"
 			>
 				<Image
-					src="{nImg>/0/url}"
-					alt="Example picture of USB flash drive"
+					src="{activity>/urlImage}"
+					alt="{activity>/name}"
 				/>
 			</Carousel>
 		</content>
@@ -47,7 +47,7 @@
 			<Text
 				class="textCenter "
 				renderWhitespace="false"
-				text="{img>/activity}"
+				text="{activity>/name}"
 				textAlign="Center"
 				textDirection="Inherit"
 				width="100%"
