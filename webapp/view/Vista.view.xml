@@ -32,8 +32,8 @@
 				
 			</List> -->
 			<Carousel
-			width="50%"
-			height="50%"
+				width="50%"
+				height="50%"
 				class="centerImage"
 				loop="true"
 			>
@@ -67,6 +67,7 @@
 						text="Retry"
 						icon="sap-icon://reset"
 						type="Reject"
+						press=".onInit"
 					/>
 				</content>
 			</OverflowToolbar>
