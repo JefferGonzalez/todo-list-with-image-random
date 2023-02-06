@@ -11,23 +11,31 @@ sap.ui.define(
     'use strict'
 
     return Controller.extend('todolist.controller.Vista', {
-      onInit: async function () {
+      onInit: function () {
         const oENV = this.getOwnerComponent().getModel('env')
         const sApiKey = oENV.getProperty('/SAPUI5_OPENAI_API_KEY')
         const OPENAI_API_KEY = `Bearer ${sApiKey}`
 
-        const { activity, participants } = await activities.getActivity()
-        const { urlImage } = await images.getRandomImage(
-          activity,
-          OPENAI_API_KEY
-        )
-
+        const ACTIVITY = {
+          name: '',
+          participants: 0,
+          urlImage: ''
+        }
         const oActivityModel = new JSONModel()
-        oActivityModel.setData({
-          name: activity,
-          participants,
-          urlImage
-        })
+        activities
+          .getActivity()
+          .then(({ activity, participants }) => {
+            ACTIVITY.name = activity
+            ACTIVITY.participants = participants
+          })
+          .finally(() => {
+            images
+              .getRandomImage(ACTIVITY.name, OPENAI_API_KEY)
+              .then(({ urlImage }) => {
+                ACTIVITY.urlImage = urlImage
+              })
+              .then(() => oActivityModel.setData(ACTIVITY))
+          })
         this.getView().setModel(oActivityModel, 'activity')
       },
       onLandClick: function () {

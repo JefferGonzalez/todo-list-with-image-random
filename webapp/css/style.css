@@ -19,3 +19,8 @@
 .border-none {
   border: none !important;
 }
+
+.center-horizontally {
+  display: grid;
+  justify-content: center;
+}
