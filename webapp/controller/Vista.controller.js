@@ -4,21 +4,22 @@ sap.ui.define(
     'sap/ui/core/mvc/Controller',
     'sap/ui/model/json/JSONModel',
     '../services/activities',
-    '../services/images'
+    '../services/images',
+    '../utils/storage'
   ],
 
-  function (Controller, JSONModel, activities, images) {
+  function (Controller, JSONModel, activities, images, storage) {
     'use strict'
 
     return Controller.extend('todolist.controller.Vista', {
       onInit: function () {
+        const oActivities = storage.getActivitiesFromStorage()
+        const oActivityModel = new JSONModel()
+        oActivityModel.setData(oActivities)
+        this._oModel = oActivityModel
+        this.getView().setModel(this._oModel, 'activities')
+
         this.onFetchfn()
-        this._oModel = new JSONModel({
-          images: [],
-          src: '',
-          id: ''
-        })
-        this.getView().setModel(this._oModel, 'images')
       },
       onFetchfn: function () {
         const oENV = this.getOwnerComponent().getModel('env')
@@ -45,7 +46,6 @@ sap.ui.define(
               })
               .then(() => oActivityModel.setData(ACTIVITY))
           })
-        console.log(oActivityModel)
         this.getView().setModel(oActivityModel, 'activity')
       },
       onAddC: function () {
@@ -53,12 +53,22 @@ sap.ui.define(
         const sActivePage = oCarousel.getActivePage()
         const oImage = this.byId(sActivePage)
         const oId = this.byId('textVista')
-        const aImages = this._oModel.getProperty('/images')
-        aImages.push({
-          src: oImage.getSrc(),
-          id: oId.getText()
+        const oActivities = this._oModel.getData()
+        oActivities.push({
+          id: oActivities.length + 1,
+          name: oId.getText(),
+          participants: 0,
+          urlImage: oImage.getSrc()
         })
-        this._oModel.setProperty('/images', aImages)
+        this._oModel.setData(oActivities)
+        storage.saveActivitiesToStorage(this._oModel.getData())
+
+        // const aImages = this._oModel.getProperty('/images')
+        // aImages.push({
+        //   src: oImage.getSrc(),
+        //   id: oId.getText()
+        // })
+        // this._oModel.setProperty('/images', aImages)
       }
     })
   }

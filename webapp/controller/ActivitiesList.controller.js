@@ -5,19 +5,20 @@ sap.ui.define(
     'sap/ui/model/json/JSONModel',
     'sap/ui/model/Filter',
     'sap/ui/model/FilterOperator',
-    'sap/ui/model/Sorter'
+    'sap/ui/model/Sorter',
+    '../utils/storage'
   ],
-  function (Controller, JSONModel, Filter, FilterOperator, Sorter) {
+  function (Controller, JSONModel, Filter, FilterOperator, Sorter, storage) {
     'use strict'
 
     return Controller.extend('todolist.controller.ActivitiesList', {
       onInit: function () {
-        const oModel = new JSONModel()
-        fetch('https://rickandmortyapi.com/api/character')
-          .then((response) => response.json())
-          .then(({ results }) => oModel.setData(results))
+        const oActivities = storage.getActivitiesFromStorage()
+        const oActivityModel = new JSONModel()
+        oActivityModel.setData(oActivities)
+        this._oModel = oActivityModel
+        this.getView().setModel(this._oModel, 'activities')
 
-        this.getView().setModel(oModel, 'characters')
         this._bDescendingSort = false
         this._oList = this.byId('activitiesList')
         this._oTable = this.byId('activitiesTable')
@@ -25,6 +26,8 @@ sap.ui.define(
       onChangeDisplayMode: function (oEvent) {
         this._oList.setVisible(!this._oList.getVisible())
         this._oTable.setVisible(!this._oTable.getVisible())
+        const oPanel = this.byId('activitiesPanel')
+        oPanel.setExpanded(false)
       },
       onFilter: function (oEvent) {
         const aFilter = []
@@ -47,6 +50,23 @@ sap.ui.define(
 
         const oSorter = new Sorter('name', this._bDescendingSort)
         oBinding.sort(oSorter)
+      },
+      onDeleteActivity: function (oEvent) {
+        const displayItem = this._oList.getVisible()
+          ? this._oList
+          : this._oTable
+        const oSelectedItem = displayItem.getSelectedItem()
+        if (!oSelectedItem) return
+
+        const iIndex = displayItem.indexOfItem(oSelectedItem)
+        const oModel = this.getView().getModel('activities')
+        const oData = oModel.getData()
+        const aNewData = oData
+          .filter((_, i) => i !== iIndex)
+          .map((oActivity, i) => ({ ...oActivity, id: i + 1 }))
+
+        storage.saveActivitiesToStorage(aNewData)
+        oModel.setData(aNewData)
       }
     })
   }

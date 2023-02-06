@@ -20,5 +20,11 @@
 			type="Transparent"
 			press=".onSort"
 		/>
+		<Button
+			id="activitiesTableRowButton"
+			icon="sap-icon://delete"
+			type="Reject"
+			press=".onDeleteActivity"
+		/>
 	</Toolbar>
 </core:FragmentDefinition>
