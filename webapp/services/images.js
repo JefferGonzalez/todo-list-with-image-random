@@ -11,10 +11,14 @@ sap.ui.define([], function () {
           'Content-Type': 'application/json',
           Authorization: OPENAI_API_KEY
         },
-        body: JSON.stringify({ prompt })
+        body: JSON.stringify({
+          prompt,
+          n: 3,
+          size: '256x256'
+        })
       })
       const { data } = await response.json()
-      return { urlImage: data[0].url }
+      return { data }
     }
   }
 })

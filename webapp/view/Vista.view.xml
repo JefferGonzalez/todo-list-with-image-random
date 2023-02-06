@@ -28,7 +28,7 @@
 			<HBox
 			class="center-horizontally"
 				alignItems="Center"
-				visible="{= !(${activity>/urlImage} !== undefined)}"
+				visible="{= !(${activity>/images} !== undefined)}"
 			>
 				<BusyIndicator size="3em"/>
 			</HBox>
@@ -41,20 +41,33 @@
 				
 			</List> -->
 			<Carousel
+			id='carousel'
 				width="50%"
 				height="50%"
 				class="centerImage"
 				loop="true"
-				visible="{= ${activity>/urlImage} !== undefined}"
+				visible="{= ${activity>/images} !== undefined}"
 			>
 				<Image
-					src="{activity>/urlImage}"
+				id="vistaImage1"
+					src="{activity>/images/0/url}"
+					alt="{activity>/name}"
+				/>
+				<Image
+				id="vistaImage2"
+					src="{activity>/images/1/url}"
+					alt="{activity>/name}"
+				/>
+				<Image
+				id="vistaImage3"
+					src="{activity>/images/2/url}"
 					alt="{activity>/name}"
 				/>
 			</Carousel>
 		</content>
 		<content>
 			<Text
+			id="textVista"
 				class="textCenter "
 				renderWhitespace="false"
 				text="{activity>/name}"
@@ -68,22 +81,39 @@
 		<content>
 			<OverflowToolbar
 				class="centerFooter border-none"
-				visible="{= ${activity>/urlImage} !== undefined}"
+				visible="{= ${activity>/images} !== undefined}"
 			>
 				<content>
 					<Button
 						icon="sap-icon://heart"
 						text="Add"
 						type="Accept"
+						press="onAddC"
 					/>
 					<Button
 						text="Retry"
 						icon="sap-icon://reset"
 						type="Reject"
-						press=".onInit"
+						press=".onFetchfn"
 					/>
 				</content>
 			</OverflowToolbar>
+		</content>
+		<content>
+			<List
+				id="list"
+				items="{images>/images}"
+			>
+				<CustomListItem>
+					<VBox>
+						<Image
+							src="{images>src}"
+							width="100px"
+						/>
+						<Text text="{images>id}"/>
+					</VBox>
+				</CustomListItem>
+			</List>
 		</content>
 	</Panel>
 </mvc:View>
