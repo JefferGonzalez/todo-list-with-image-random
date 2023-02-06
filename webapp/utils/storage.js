@@ -5,7 +5,7 @@ sap.ui.define([], function () {
   return {
     /**
      * Save activities to local storage
-     * @param {Array.<{name:String, participants: Number, urlImage: String}>} activities
+     * @param {Array.<{id: Number, name:String, participants: Number, urlImage: String}> | any[]} activities
      * @returns {void}
      */
     saveActivitiesToStorage: function (activities) {
@@ -14,11 +14,11 @@ sap.ui.define([], function () {
     },
     /**
      * Get activities from local storage
-     * @returns {Array.<{name:String, participants: Number, urlImage: String}>}
+     * @returns {Array.<{id: Number,name:String, participants: Number, urlImage: String}>}
      */
     getActivitiesFromStorage: function () {
       const activities = window.localStorage.getItem('activities')
-      return activities ? JSON.parse(activities) : []
+      return activities ? JSON.parse(activities).Activities : []
     }
   }
 })

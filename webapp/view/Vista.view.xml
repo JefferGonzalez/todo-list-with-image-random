@@ -26,9 +26,10 @@
 		</Bar>
 		<content>
 			<HBox
-			class="center-horizontally"
+				class="center-horizontally"
 				alignItems="Center"
-				visible="{= !(${activity>/images} !== undefined)}"
+				visible="{= !(${activity>/images} !== undefined)
+					}"
 			>
 				<BusyIndicator size="3em"/>
 			</HBox>
@@ -41,7 +42,7 @@
 				
 			</List> -->
 			<Carousel
-			id='carousel'
+				id="carousel"
 				width="50%"
 				height="50%"
 				class="centerImage"
@@ -49,17 +50,17 @@
 				visible="{= ${activity>/images} !== undefined}"
 			>
 				<Image
-				id="vistaImage1"
+					id="vistaImage1"
 					src="{activity>/images/0/url}"
 					alt="{activity>/name}"
 				/>
 				<Image
-				id="vistaImage2"
+					id="vistaImage2"
 					src="{activity>/images/1/url}"
 					alt="{activity>/name}"
 				/>
 				<Image
-				id="vistaImage3"
+					id="vistaImage3"
 					src="{activity>/images/2/url}"
 					alt="{activity>/name}"
 				/>
@@ -67,7 +68,7 @@
 		</content>
 		<content>
 			<Text
-			id="textVista"
+				id="textVista"
 				class="textCenter "
 				renderWhitespace="false"
 				text="{activity>/name}"
@@ -102,15 +103,15 @@
 		<content>
 			<List
 				id="list"
-				items="{images>/images}"
+				items="{activities>/}"
 			>
 				<CustomListItem>
 					<VBox>
 						<Image
-							src="{images>src}"
+							src="{activities>urlImage}"
 							width="100px"
 						/>
-						<Text text="{images>id}"/>
+						<Text text="{activities>name}"/>
 					</VBox>
 				</CustomListItem>
 			</List>

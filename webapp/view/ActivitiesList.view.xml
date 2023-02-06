@@ -22,7 +22,8 @@
 	</Panel>
 	<List
 		id="activitiesList"
-		items="{characters>/}"
+		mode="SingleSelect"
+		items="{activities>/}"
 		width="auto"
 		class="sapUiResponsiveMargin"
 	>
@@ -34,9 +35,9 @@
 			/>
 		</headerToolbar>
 		<items>
-			<ObjectListItem
-				id="activitiesListItem"
-				title="{characters>name}: {characters>status}"
+			<StandardListItem
+				icon="{activities>urlImage}"
+				title="{activities>name}"
 			/>
 		</items>
 	</List>
@@ -46,8 +47,9 @@
 		width="auto"
 		class="sapUiResponsiveMargin"
 		visible="false"
+		mode="SingleSelect"
 		items="{
-			path: 'characters>/'
+			path: 'activities>/'
 		}"
 	>
 		<headerToolbar>
@@ -77,40 +79,23 @@
 				/>
 			</Column>
 			<Column
-				id="activitiesTableColumnStatus"
+				id="activitiesTableColumnParticipants"
 				minScreenWidth="Small"
 				demandPopin="true"
 			>
 				<Text
-					id="activitiesTableColumnStatusText"
-					text="Status"
+					id="activitiesTableColumnParticipantsText"
+					text="Participants"
 				/>
 			</Column>
 			<Column
-				id="activitiesTableColumnSpecies"
-				minScreenWidth="Tablet"
+				id="activitiesTableColumnImage"
+				minScreenWidth="Small"
+				demandPopin="true"
 			>
 				<Text
-					id="activitiesTableColumnSpeciesText"
-					text="Species"
-				/>
-			</Column>
-			<Column
-				id="activitiesTableColumnGender"
-				hAlign="End"
-			>
-				<Text
-					id="activitiesTableColumnGenderText"
-					text="Gender"
-				/>
-			</Column>
-			<Column
-				id="activitiesTableColumnActions"
-				hAlign="End"
-			>
-				<Text
-					id="activitiesTableColumnActionsText"
-					text="Actions"
+					id="activitiesTableColumnImageText"
+					text="Image"
 				/>
 			</Column>
 		</columns>
@@ -119,30 +104,20 @@
 				<cells>
 					<ObjectNumber
 						id="activitiesTableRowId"
-						number="{characters>id}"
+						number="{activities>id}"
 						emphasized="false"
 					/>
 					<ObjectIdentifier
 						id="activitiesTableRowName"
-						title="{characters>name}"
+						title="{activities>name}"
 					/>
-					<ObjectStatus
+					<ObjectNumber
 						id="activitiesTableRowStatus"
-						text="{characters>status}"
-						state="{= ${characters>status} !== 'Alive' ? 'Error' : 'Success' }"
+						number="{activities>participants}"
 					/>
-					<Text
-						id="activitiesTableRowSpecies"
-						text="{characters>species}"
-					/>
-					<Text
-						id="activitiesTableRowGender"
-						text="{characters>gender}"
-					/>
-					<Button
-						id="activitiesTableRowButton"
-						icon="sap-icon://edit"
-						type="Emphasized"
+					<Image
+						src="{activities>urlImage}"
+						width="100px"
 					/>
 				</cells>
 			</ColumnListItem>
