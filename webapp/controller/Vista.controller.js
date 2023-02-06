@@ -50,7 +50,8 @@ sap.ui.define(
       },
       onAddC: function () {
         const oCarousel = this.byId('carousel')
-        const oImage = this.byId('vistaImage1')
+        const sActivePage = oCarousel.getActivePage()
+        const oImage = this.byId(sActivePage)
         const oId = this.byId('textVista')
         const aImages = this._oModel.getProperty('/images')
         aImages.push({
@@ -58,7 +59,6 @@ sap.ui.define(
           id: oId.getText()
         })
         this._oModel.setProperty('/images', aImages)
-        console.log(oCarousel)
       }
     })
   }
