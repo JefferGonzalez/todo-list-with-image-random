@@ -2,21 +2,19 @@
 sap.ui.define(
   [
     'sap/ui/core/mvc/Controller',
-    'sap/ui/model/json/JSONModel',
     'sap/ui/model/Filter',
     'sap/ui/model/FilterOperator',
     'sap/ui/model/Sorter',
     '../utils/storage'
   ],
-  function (Controller, JSONModel, Filter, FilterOperator, Sorter, storage) {
+  function (Controller, Filter, FilterOperator, Sorter, storage) {
     'use strict'
 
     return Controller.extend('todolist.controller.ActivitiesList', {
       onInit: function () {
-        const oActivities = storage.getActivitiesFromStorage()
-        const oActivityModel = new JSONModel()
-        oActivityModel.setData(oActivities)
-        this._oModel = oActivityModel
+        // eslint-disable-next-line
+        this._oModel = sap.ui.getCore().getModel('activities')
+
         this.getView().setModel(this._oModel, 'activities')
 
         this._bDescendingSort = false
@@ -59,7 +57,8 @@ sap.ui.define(
         if (!oSelectedItem) return
 
         const iIndex = displayItem.indexOfItem(oSelectedItem)
-        const oModel = this.getView().getModel('activities')
+        // eslint-disable-next-line
+        const oModel = sap.ui.getCore().getModel('activities')
         const oData = oModel.getData()
         const aNewData = oData
           .filter((_, i) => i !== iIndex)
@@ -67,6 +66,9 @@ sap.ui.define(
 
         storage.saveActivitiesToStorage(aNewData)
         oModel.setData(aNewData)
+        oModel.refresh()
+        // eslint-disable-next-line no-undef
+        sap.ui.getCore().setModel(oModel, 'activities')
       }
     })
   }
