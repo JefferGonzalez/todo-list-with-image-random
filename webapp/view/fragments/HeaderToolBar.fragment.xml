@@ -21,6 +21,11 @@
 			press=".onSort"
 		/>
 		<Button
+		id="activitiesPanelButton"
+		icon="sap-icon://activate"
+		press=".onChangeDisplayMode"
+		/>
+		<Button
 			id="activitiesTableRowButton"
 			icon="sap-icon://delete"
 			type="Reject"

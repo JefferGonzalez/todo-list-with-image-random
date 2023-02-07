@@ -29,7 +29,7 @@
 				class="center-horizontally"
 				alignItems="Center"
 				visible="{= !(${activity>/images} !== undefined)
-					}"
+				}"
 			>
 				<BusyIndicator size="3em"/>
 			</HBox>
@@ -80,16 +80,14 @@
 			/>
 		</content>
 		<content>
-			<OverflowToolbar
-				class="centerFooter border-none"
-				visible="{= ${activity>/images} !== undefined}"
-			>
+			<OverflowToolbar class="centerFooter border-none">
 				<content>
 					<Button
 						icon="sap-icon://heart"
 						text="Add"
 						type="Accept"
 						press="onAddC"
+						visible="{= ${activity>/images} !== undefined}"
 					/>
 					<Button
 						text="Retry"
@@ -99,22 +97,6 @@
 					/>
 				</content>
 			</OverflowToolbar>
-		</content>
-		<content>
-			<List
-				id="list"
-				items="{activities>/}"
-			>
-				<CustomListItem>
-					<VBox>
-						<Image
-							src="{activities>urlImage}"
-							width="100px"
-						/>
-						<Text text="{activities>name}"/>
-					</VBox>
-				</CustomListItem>
-			</List>
 		</content>
 	</Panel>
 </mvc:View>
