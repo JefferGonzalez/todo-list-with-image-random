@@ -13,11 +13,14 @@ sap.ui.define(
 
     return Controller.extend('todolist.controller.Vista', {
       onInit: function () {
+        // eslint-disable-next-line
         const oActivities = storage.getActivitiesFromStorage()
         const oActivityModel = new JSONModel()
         oActivityModel.setData(oActivities)
         this._oModel = oActivityModel
         this.getView().setModel(this._oModel, 'activities')
+        // eslint-disable-next-line no-undef
+        sap.ui.getCore().setModel(this._oModel, 'activities')
 
         this.onFetchfn()
       },
@@ -53,22 +56,20 @@ sap.ui.define(
         const sActivePage = oCarousel.getActivePage()
         const oImage = this.byId(sActivePage)
         const oId = this.byId('textVista')
-        const oActivities = this._oModel.getData()
-        oActivities.push({
-          id: oActivities.length + 1,
+
+        // eslint-disable-next-line no-undef
+        const oActivities = sap.ui.getCore().getModel('activities')
+        const aActivities = oActivities.getData()
+        aActivities.push({
+          id: aActivities.length + 1,
           name: oId.getText(),
           participants: 0,
           urlImage: oImage.getSrc()
         })
-        this._oModel.setData(oActivities)
-        storage.saveActivitiesToStorage(this._oModel.getData())
+        oActivities.setData(aActivities)
+        oActivities.refresh()
 
-        // const aImages = this._oModel.getProperty('/images')
-        // aImages.push({
-        //   src: oImage.getSrc(),
-        //   id: oId.getText()
-        // })
-        // this._oModel.setProperty('/images', aImages)
+        storage.saveActivitiesToStorage(aActivities)
       }
     })
   }
